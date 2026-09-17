@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eres la mas perrona aquí</title>
+<style>
+    body {
+        background-color: #fce4ec; /*cambia el color de fondo*/
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+           }
+           h1 {
+            color: blueviolet;/*cambia el color del titulo principal*/
+           }
+           p {
+            color: rgb(243, 6, 144);
+            font-size: 18px;
+           }
+           image{
+            width: 300px;
+            border-radius: 10px;
+            margin-top: 20px;
+           }
+           .boton-interactivo {
+            background-color: #673ab7;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+}
+
+            .boton-interactivo:hover {
+            background-color: #512da8; /* Cambia de tono al pasar el mouse */
+}   
+           </style>
+</head>
+<body>
+   <h1>no te rindas perra</h1>
+  <P>Sigue perreando con esa inrensidad de siempre</P>
+  <img src="imagen.png" alt="perrona">
+  <br> <!-- Esta etiqueta sirve para dar un salto de línea -->
+
+    <!-- El botón interactivo y su espacio para el mensaje -->
+    <button onclick="saludar()" class="boton-interactivo">¡Haz clic para una sorpresa!</button>
+    <p id="mensaje-secreto" style="font-weight: bold; color: #d81b60; margin-top: 10px;"></p>
+
+    <!-- 3. AQUÍ VA EL JAVASCRIPT (al final del body, antes de cerrar) -->
+    <script>
+        function saludar() {
+            document.getElementById("mensaje-secreto").innerText = "¡Sorpresa! eres la mejor perre 🎉";
+        }
+    </script>
+</body>
+</html>
