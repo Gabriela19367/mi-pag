@@ -3,60 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FELIZ DIA</title>
-<style>
-    body {
-        background-color: #fdf5ab; /*cambia el color de fondo*/
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin-top: 50px;
-           }
-           h1 {
-            color: rgb(168, 90, 241);/*cambia el color del titulo principal*/
-           }
-           p {
-            color: rgb(255, 2, 221);
-            font-size: 18px;
-           }
-           img{
-            width: 200px;
-            border-radius: 10px;
-            margin-top: 20px;
-           }
-           .boton-interactivo {
-            background-color: #673ab7;
-            color: rgb(255, 219, 61);
+    <title>Mi.WEb</title>
+    <style>
+        /* Estilos generales con un toque moderno */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .tarjeta {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 450px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: #00ffcc;
+        }
+
+        p {
+            color: #b0b0c3;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* Caja donde aparecerá el resultado dinámico */
+        .caja-resultado {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #00ffcc;
+            font-style: italic;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Estilos de los botones */
+        .btn-grupo {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        button {
+            background-color: #00ffcc;
+            color: #1e1e2f;
             border: none;
-            padding: 12px 24px;
-            font-size: 16px;
+            padding: 12px 20px;
+            font-size: 15px;
+            font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
-            margin-top: 20px;
-            transition: background-color 0.3s;
-}
+            transition: all 0.3s ease;
+        }
 
-            .boton-interactivo:hover {
-            background-color: #804aff; /* Cambia de tono al pasar el mouse */
-}   
-           </style>
+        button:hover {
+            background-color: #00b38f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 255, 204, 0.3);
+        }
+
+        .btn-secundario {
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secundario:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: #ffffff;
+        }
+    </style>
 </head>
 <body>
-   <h1>fELIZ DIA DE LAS FLORES AMARILLAS LUMY,
-       ERES LA MEJOR AMIGA
-   </h1>
-  <P>Gracias por estar allí siempre, tu amistad es mi lugar favorito</P>
-  <img src="imagen.png" alt="amarilla">
-  <br> <!-- Esta etiqueta sirve para dar un salto de línea -->
 
-    <!-- El botón interactivo y su espacio para el mensaje -->
-    <button onclick="saludar()" class="boton-interactivo">¡Haz clic!</button>
-    <p id="mensaje-secreto" style="font-weight: bold; color: #d81b60; margin-top: 10px;"></p>
+    <div class="tarjeta">
+        <h1>EL ESPEJO NO MIENTE</h1>
+        <p>ESTÁIS DISPUESTOS A CREERLE?...</p>
+        
+        <!-- Aquí JavaScript inyectará información dinámica -->
+        <div class="caja-resultado" id="textoDinamico">
+            Haz clic en el botón de abajo para generar un secreto...
+        </div>
 
-    <!-- 3. AQUÍ VA EL JAVASCRIPT (al final del body, antes de cerrar) -->
+        <div class="btn-grupo">
+            <button id="btnMagico">Generar Secreto 🔮</button>
+            <button id="btnVentana" class="btn-secundario">Abrir Segundo portal... ↗</button>
+        </div>
+    </div>
+
     <script>
-        function saludar() {
-            document.getElementById("mensaje-secreto").innerText = "¡te quiero mucho!, Tener tu amistad es como tener un campo entero de flores amarillas ✨🌻💛";
-        }
+        // 1. Elementos que vamos a controlar desde JS
+        const btnMagico = document.getElementById("btnMagico");
+        const btnVentana = document.getElementById("btnVentana");
+        const cajaTexto = document.getElementById("textoDinamico");
+
+        // 2. Nuestra base de datos local de secretos/frases
+        const secretos = [
+            "No vistas de verde en tu camerino. ✨",
+            "regalale un chocolate a Gabriela. 💻",
+            "No dejes tu historial sin borrar! 🚀",
+            "Ese secreto que creiste sepultado saldrá a la luz en unos dias... 🌙",
+            "no dejes la nevera abierta",
+            "sonríe perra",
+            "El ciclo se repetirá exactamente igual, estate atento...",
+            "no dejes la puerta de tu cuarto abierta... si alcanzas a ver oscuridad entre la rendija alguien te podria estar observando desde adentro",
+            "No aceptes una taza de té de alguien que evite mirarte a los ojos en el pasillo; el primer sorbo sabrá a disculpa, y el segundo a despedida.",
+            "No guardes cartas viejas debajo de tu almohada; si las despiertas con tus sueños, empezarán a escribir su propia historia en tu piel.",
+            "No mires por la ventana cuando escuches rasguños en el cristal a altas horas de la madrugada; si hay algo ahí afuera, sabrá que ya lo descubriste.",
+            "No dejes ninguna fotografía boca abajo sobre la mesa de noche; alguien podría usar el espacio en blanco para ocupar tu lugar.",
+            "No camines por el pasillo principal con las luces apagadas después de las tres de la mañana; hay una sombra que ya aprendió a imitar tus pasos.",
+            "No cuentes los escalones cuando bajes al sótano a oscuras; si te sobra uno al final, significa que algo bajó contigo.",
+"No guardes espejos rotos en tu habitación, ni siquiera dentro de un cajón; los pedazos buscarán la forma de reflejar a alguien que no eres tú.",
+"Nunca dejes una silla vacía frente a la mesa puesta; alguien con mucha hambre de volver a este mundo podría decidir que el asiento le pertenece.",
+"No pronuncies tu propio nombre en voz alta frente al espejo del baño cuando la casa esté completamente en silencio; alguien podría responder en tu lugar.",
+"No recojas ninguna llave tirada en el suelo del pasillo, por más antigua o bonita que se vea; abrirá una puerta que llevas años intentando mantener cerrada.",
+"No apagues la última vela de la sala si sientes una brisa fría en la nuca; lo que está parado detrás de ti no quiere que te des la vuelta."
+        ];
+
+        // 3. Evento para el botón mágico (cambia el texto al azar)
+        btnMagico.addEventListener("click", function() {
+            const indiceAleatorio = Math.floor(Math.random() * secretos.length);
+            cajaTexto.textContent = secretos[indiceAleatorio];
+        });
+
+        // 4. Evento para abrir tu segunda página (que ya tenías creada)
+        btnVentana.addEventListener("click", function() {
+            window.open("segunda.html", "_blank");
+        });
     </script>
+
 </body>
 </html>
